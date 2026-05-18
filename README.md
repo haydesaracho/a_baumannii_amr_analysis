@@ -102,6 +102,8 @@ A_baumannii_AMR_analysis/
 ## Usage
 
 ```bash
+## Usage
+
 # 1. Clone the repository
 git clone https://github.com/HaydeSaracho/A_baumannii_AMR_analysis.git
 cd A_baumannii_AMR_analysis
@@ -110,11 +112,15 @@ cd A_baumannii_AMR_analysis
 cd scripts
 bash 01_download_and_filter.sh
 
-# 3. Run ABRicate
+# 3. Install ABRicate
+conda create -n abricate_env -c conda-forge -c bioconda abricate -y
 conda activate abricate_env
+conda install -c conda-forge jupyter pandas matplotlib seaborn -y
+
+# 4. Run ABRicate
 bash 02_run_abricate.sh
 
-# 4. Analysis
+# 5. Analysis
 jupyter notebook analysis/notebooks/01_AMR_analysis.ipynb
 ```
 
