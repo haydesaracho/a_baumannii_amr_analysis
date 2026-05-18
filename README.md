@@ -1,77 +1,77 @@
 # *Acinetobacter baumannii* AMR Analysis
 
-Análisis de genes de resistencia a antibióticos en genomas completos de
-*Acinetobacter baumannii* integrando cinco bases de datos de ABRicate.
+Comparative analysis of antibiotic resistance genes in complete *Acinetobacter baumannii*
+genomes integrating five ABRicate databases.
 
 ---
 
 ## Background
 
-*Acinetobacter baumannii* es un cocobacilo Gram-negativo oportunista y uno de los
-patógenos nosocomiales más problemáticos a nivel mundial. La Organización Mundial de
-la Salud (OMS) lo clasifica como patógeno de **prioridad crítica**, destacando la
-urgente necesidad de desarrollar nuevos antibióticos frente a cepas resistentes a
-carbapenems (CRAB).
+*Acinetobacter baumannii* is an opportunistic Gram-negative coccobacillus and one of the
+most problematic nosocomial pathogens worldwide. The World Health Organization (WHO)
+classifies it as a **critical priority pathogen**, highlighting the urgent need to develop
+new antibiotics against carbapenem-resistant strains (CRAB).
 
-El microorganismo afecta principalmente a pacientes críticos en unidades de cuidados
-intensivos (UCI), causando neumonía asociada a ventilador, infecciones del torrente
-sanguíneo e infecciones de heridas. Actualmente, el 45% de los aislamientos globales
-de *A. baumannii* son multidrogorresistentes (MDR), con picos del 70% en Sudamérica,
-Asia y Europa. En casos de cepas extensamente resistentes (XDR) o panresistentes (PDR),
-las opciones terapéuticas se reducen a colistina y tigeciclina como últimos recursos.
+The organism primarily affects critically ill patients in intensive care units (ICUs),
+causing ventilator-associated pneumonia, bloodstream infections, and wound infections.
+Currently, 45% of global *A. baumannii* isolates are multidrug-resistant (MDR), with
+peaks of 70% in South America, Asia, and Europe. In cases of extensively drug-resistant
+(XDR) or pandrug-resistant (PDR) strains, therapeutic options are limited to colistin
+and tigecycline as last-resort antibiotics.
 
-Su capacidad para adquirir y diseminar mecanismos de resistencia — incluyendo
-betalactamasas, bombas de eflujo, modificación de aminoglucósidos y transferencia
-horizontal de genes — lo convierte en un modelo de estudio fundamental para comprender
-la evolución de la resistencia antimicrobiana.
+Its ability to acquire and disseminate resistance mechanisms — including beta-lactamases,
+efflux pumps, aminoglycoside-modifying enzymes, and horizontal gene transfer — makes it
+a fundamental model for studying the evolution of antimicrobial resistance.
 
 ---
 
-## Objetivos
+## Objectives
 
-- Descargar y filtrar genomas completos de *A. baumannii* disponibles en NCBI RefSeq
-- Anotar genes de resistencia a antibióticos con ABRicate usando 5 bases de datos
-- Comparar la cobertura y consistencia entre bases de datos
-- Identificar el repertorio de genes de resistencia más frecuentes en la especie
+- Download and filter complete *A. baumannii* genomes available in NCBI RefSeq
+- Annotate antibiotic resistance genes with ABRicate using 5 databases
+- Compare coverage and consistency across databases
+- Identify the most frequent resistance gene repertoire in the species
 
 ---
 
 ## Pipeline
-
+```
 NCBI RefSeq
-↓
-01_download_and_filter.sh   # Descarga, filtrado y limpieza del assembly summary
-↓
-data/raw/genomes/           # 1012 genomas completos (.fna.gz)
-↓
-02_run_abricate.sh          # Anotación con 5 bases de datos (minid=80, mincov=80)
-↓
-results/                    # Tablas de resultados por base de datos
-↓
-analysis/notebooks/01_AMR_analysis.ipynb   # Análisis y visualización en Python
+    ↓
+01_download_and_filter.sh   # Downloads and filters the assembly summary
+    ↓
+data/raw/genomes/           # 1012 complete genomes (.fna.gz)
+    ↓
+02_run_abricate.sh          # Annotation with 5 databases (minid=80, mincov=80)
+    ↓
+results/                    # Results tables per database
+    ↓
+analysis/notebooks/01_AMR_analysis.ipynb   # Analysis and visualization in Python
+```
 
 ---
 
-## Bases de datos utilizadas
+## Databases
 
-| Base de datos | Versión ABRicate | Enfoque |
-|---------------|-----------------|---------|
-| CARD | 2026-Apr-3 | Resistencia a antibióticos |
-| ResFinder | 2026-Apr-3 | Resistencia a antibióticos |
-| ARG-ANNOT | 2026-Apr-3 | Resistencia a antibióticos |
-| MEGARES | 2026-Apr-3 | Resistencia a antibióticos |
-| NCBI AMRFinderPlus | 2026-Apr-3 | Resistencia a antibióticos |
+| Database | ABRicate version |
+|----------|-----------------|
+| CARD | 2026-Apr-3 |
+| ResFinder | 2026-Apr-3 |
+| ARG-ANNOT | 2026-Apr-3 |
+| MEGARES | 2026-Apr-3 |
+| NCBI AMRFinderPlus | 2026-Apr-3 |
 
 ---
 
-## Estructura del repositorio
+## Repository structure
 
+```
 A_baumannii_AMR_analysis/
 ├── README.md
 ├── data/
 │   ├── raw/
 │   │   ├── assembly_summary_refseq.txt
-│   │   └── genomes/                    # 1012 genomas .fna.gz
+│   │   └── genomes/                    # 1012 genomes .fna.gz
 │   └── processed/
 │       ├── Assembly_Summary_Ab_CG.tsv
 │       ├── Assembly_Summary_Ab_CG_clean.tsv
@@ -89,40 +89,41 @@ A_baumannii_AMR_analysis/
 │   └── notebooks/
 │       └── 01_AMR_analysis.ipynb
 └── figures/
+```
 
 ---
 
-## Requisitos
+## Requirements
 
 - Linux / WSL
 - `wget`
 - `python3` + `pandas`
-- `conda` + `abricate` (instalado en ambiente `abricate_env`)
+- `conda` + `abricate` (installed in `abricate_env` environment)
 - `jupyter notebook`
 
 ---
 
-## Uso
+## Usage
 
 ```bash
-# 1. Clonar el repositorio
+# 1. Clone the repository
 git clone https://github.com/HaydeSaracho/A_baumannii_AMR_analysis.git
 cd A_baumannii_AMR_analysis
 
-# 2. Descargar genomas
+# 2. Download genomes
 cd scripts
 bash 01_download_and_filter.sh
 
-# 3. Correr ABRicate
+# 3. Run ABRicate
 conda activate abricate_env
 bash 02_run_abricate.sh
 
-# 4. Análisis
+# 4. Analysis
 jupyter notebook analysis/notebooks/01_AMR_analysis.ipynb
 ```
 
 ---
 
-## Autora
+## Author
 
 **Haydé Saracho**
