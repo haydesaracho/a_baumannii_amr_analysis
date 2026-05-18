@@ -7,21 +7,17 @@ genomes integrating five ABRicate databases.
 
 ## Background
 
-*Acinetobacter baumannii* is an opportunistic Gram-negative coccobacillus and one of the
-most problematic nosocomial pathogens worldwide. The World Health Organization (WHO)
-classifies it as a **critical priority pathogen**, highlighting the urgent need to develop
-new antibiotics against carbapenem-resistant strains (CRAB).
+*Acinetobacter baumannii* is one of the most problematic opportunistic pathogens worldwide. 
+The World Health Organization (WHO) classifies it as a **critical priority pathogen**, 
+emphasizing the urgent need to develop new antibiotics and/or alternative therapies to 
+combat multidrug-resistant strains.
 
-The organism primarily affects critically ill patients in intensive care units (ICUs),
-causing ventilator-associated pneumonia, bloodstream infections, and wound infections.
-Currently, 45% of global *A. baumannii* isolates are multidrug-resistant (MDR), with
-peaks of 70% in South America, Asia, and Europe. In cases of extensively drug-resistant
-(XDR) or pandrug-resistant (PDR) strains, therapeutic options are limited to colistin
-and tigecycline as last-resort antibiotics.
-
-Its ability to acquire and disseminate resistance mechanisms — including beta-lactamases,
-efflux pumps, aminoglycoside-modifying enzymes, and horizontal gene transfer — makes it
-a fundamental model for studying the evolution of antimicrobial resistance.
+This organism primarily affects patients admitted to intensive care units and can cause 
+ventilator-associated pneumonia, bloodstream infections and wound infections. 
+Recent studies indicate that rates of multidrug resistance exceed 89% in hospital settings 
+and that carbapenem-resistant strains account for approximately 80% of cases of hospital-acquired 
+and ventilator-associated pneumonia worldwide, with resistance rates exceeding 90% in Southeast Asia (WHO, 2024). 
+In cases of extremely drug-resistant or pan-resistant strains, treatment options are even more limited.
 
 ---
 
