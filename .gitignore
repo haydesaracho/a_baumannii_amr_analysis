@@ -1,0 +1,7 @@
+data/raw/genomes/
+data/raw/assembly_summary_refseq.txt
+data/processed/ftp_links.txt
+__pycache__/
+.ipynb_checkpoints/
+*.Zone.Identifier
+scripts/wget-log
